@@ -13,9 +13,10 @@ public class Methods {
     //fibonacci
     //odwracanie stringa test -> tset, abcde -> edcba
     //sprawdzanie nawiasow w stringu ")("
-    //suma cyfr w stringu (wywloanie jakich metod?) -> "1234"
-    //metoda do porownania 2 stringow ktore sa liczbami
-    //
+
+    //metoda zwracajaca nowa tablice ktora jest odwrocona
+    //drzewko
+    //metoda do porownania 2 stringow ktore sa liczbami (1 jezeli pierwszy argument jest wiekszy, 0 jesli rowne, -1 jesli pierwszy jest mniejszy)
     //metoda wyswietlajaca sume liczb pierwszych w danej liczbie (1,2,3,5,7,11) np.
     //              liczba 29 = 11 + 11 + 7
     //              liczba 31 = 11 + 11 + 7 + 2
@@ -56,6 +57,70 @@ public class Methods {
         System.out.println("\"(a+b))\" is valid = " + isValidStatement("(a+b))"));
         System.out.println("\")(a+b))\" is valid = " + isValidStatement(")(a+b))"));
         System.out.println("\")(a+b)(\" is valid = " + isValidStatement(")(a+b)("));
+        System.out.println("reversed array {1,2,3,4,5,6,7} = " + Arrays.toString(reverseArray(new int[]{1,2,3,4,5,6,7})));
+        System.out.println("tree of heigth 3 = \n" + tree(3));
+        System.out.println("compare(\"123\", \"55\")(1) =\t" + compare("123", "55"));
+        System.out.println("compare(\"123\", \"155\")(-1) =\t" + compare("123", "155"));
+        System.out.println("compare(\"123\", \"123\")(0) =\t" + compare("123", "123"));
+        System.out.println("Primary numbers of 31 = " + primaryNumbersOf(31));
+        System.out.println("Primary numbers of 37 = " + primaryNumbersOf(37));
+        System.out.println("Primary numbers of 11 = " + primaryNumbersOf(11));
+        System.out.println("Primary numbers of 7 = " + primaryNumbersOf(7));
+    }
+
+    public static String primaryNumbersOf(int number) {
+        int[] primaryNumbers = {1, 2, 3, 5, 7, 11, 13};
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = primaryNumbers.length - 1; i >= 0; i--) {
+            while (number >= primaryNumbers[i]) {
+                number -= primaryNumbers[i];
+                stringBuilder.append(primaryNumbers[i]);
+                stringBuilder.append(" + ");
+            }
+        }
+        return stringBuilder.substring(0, stringBuilder.length() - 2);
+    }
+
+    public static int compare(String first, String second) {
+        int result = 0;
+        if (first.length() > second.length()) {
+            result = 1;
+        } else if (first.length() < second.length()) {
+            result = -1;
+        } else {
+            int i = 0;
+            while (i < first.length() && result == 0) {
+                if (first.charAt(i) > second.charAt(i)) {
+                    result = 1;
+                } else if (first.charAt(i) < second.charAt(i)) {
+                    result = -1;
+                }
+                i++;
+            }
+        }
+        return result;
+    }
+
+    public static String tree(int height) {
+        StringBuilder treeBuilder = new StringBuilder();
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < height - 1 - i; j++) {
+                treeBuilder.append(" ");
+            }
+            for (int j = 0; j < 2 * i + 1; j++) {
+                treeBuilder.append("*");
+            }
+            treeBuilder.append("\n");
+        }
+        return treeBuilder.toString();
+    }
+
+    public static int[] reverseArray(int[] array) {
+        int[] reversedArray = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            reversedArray[i] = array[array.length - 1 - i];
+        }
+        return reversedArray;
     }
 
     public static boolean isValidStatement(String statetment) {
