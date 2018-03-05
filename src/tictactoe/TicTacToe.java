@@ -33,9 +33,9 @@ public class TicTacToe {
         TicTacToeViews.boardView(board);
         System.out.println("END OF GAME!");
         if (!gameFinished(board)) {
-            System.out.println("Draw");
+            TicTacToeViews.drawEndGame();
         } else {
-            System.out.println("And the loser is " + currentSign);
+            TicTacToeViews.loserEndGame(currentSign);
         }
     }
 
@@ -88,7 +88,7 @@ public class TicTacToe {
         do {
             position = scanner.nextInt();
             if (!isValidPosition(position, board)) {
-                System.out.println("Invalid value. Try again");
+                TicTacToeViews.invalidValueFromUserMessage();
             }
         } while(!isValidPosition(position, board));
         return position - 1;

@@ -28,4 +28,16 @@ public class TicTacToeViews {
         }
         System.out.println(stringBuilder.toString());
     }
+
+    public static void loserEndGame(char currentSign) {
+        System.out.println("And the loser is " + currentSign);
+    }
+
+    public static void drawEndGame() {
+        System.out.println("Draw");
+    }
+
+    public static void invalidValueFromUserMessage() {
+        System.out.println("Invalid value. Try again");
+    }
 }
