@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Calculator {
     public static void main(String[] args) {
-        System.out.println("Calculator");
+        System.out.println("TicTacToe");
         Scanner reader = new Scanner(System.in);
         //int someValue = reader.nextInt();
         //System.out.println(someValue);
