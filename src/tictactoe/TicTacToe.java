@@ -18,7 +18,6 @@ public class TicTacToe {
     }
 
     public static void startGame(Scanner scanner) {
-        boolean result = true;
         char cross = 'X';
         char circle = 'O';
         char currentSign = cross;
@@ -31,20 +30,57 @@ public class TicTacToe {
             currentSign = currentSign == 'X' ? circle : cross;
             i++;
         } while (i < 9 && !gameFinished(board));
-        System.out.println("End of game");
+        TicTacToeViews.boardView(board);
+        System.out.println("END OF GAME!");
+        if (!gameFinished(board)) {
+            System.out.println("Draw");
+        } else {
+            System.out.println("And the loser is " + currentSign);
+        }
     }
 
     private static boolean gameFinished(char[] board) {
         //TODO wrzucic tutaj i i sprawdzic czy jest remis
-        //        return isFirstDiagonalEqual(board) ||
-//                isSecondDiagonalEqual(board) ||
-//                isAnyVerticalEqual(board) ||
-//                isAnyHorizontalEqual(board);
-        return false;
+        return isFirstDiagonalEqual(board) ||
+                isSecondDiagonalEqual(board) ||
+                isAnyVerticalEqual(board) ||
+                isAnyHorizontalEqual(board);
+    }
+
+    private static boolean isAnyHorizontalEqual(char[] board) {
+        int i = 0;
+        boolean result = false;
+        while (!result && i < 3) {
+            result = equals(board, i * 3, i * 3 + 1, i * 3 + 2);
+            i++;
+        }
+        return result;
+    }
+
+    private static boolean isAnyVerticalEqual(char[] board) {
+        int i = 0;
+        boolean result = false;
+        while (!result && i < 3) {
+            result = equals(board, i, i + 3, i + 6);
+            i++;
+        }
+        return result;
+    }
+
+    private static boolean isSecondDiagonalEqual(char[] board) {
+        return equals(board, 2, 4, 6);
+    }
+
+    private static boolean isFirstDiagonalEqual(char[] board) {
+        return equals(board, 0, 4, 8);
     }
 
     private static void mark(char currentSign, char[] board, int position) {
         board[position] = currentSign;
+    }
+
+    private static boolean equals(char[] board, int i1, int i2, int i3) {
+        return board[i1] == board[i2] && board[i1] == board[i3];
     }
 
     public static int askForPosition(Scanner scanner, char[] board) {
