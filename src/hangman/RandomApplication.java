@@ -1,5 +1,6 @@
 package hangman;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
@@ -24,7 +25,17 @@ public class RandomApplication {
 //        for (int i = 0; i < array.length; i++) {
 //            System.out.println(i + ". " + array[i]);
 //        }
-        randomArrayFromUser();
+//        randomArrayFromUser();
+        randomArrayOfEvenNumbers();
+    }
+
+    public static void randomArrayOfEvenNumbers() {
+        int[] array = new int[10];
+        Random random = new Random();
+        for (int i = 0; i < 10; i++) {
+            array[i] = (random.nextInt(5) + 1) * 3;
+        }
+        System.out.println(Arrays.toString(array));
     }
 
     public static void randomArrayFromUser() {
@@ -47,7 +58,6 @@ public class RandomApplication {
             System.out.println(array[i]);
         }
     }
-
     //wygenerowac 10 losowych liczb parzystych z zakresu 0 - 10 włącznie (zadanie domowe) - metoda
 
     public static void sum() {
