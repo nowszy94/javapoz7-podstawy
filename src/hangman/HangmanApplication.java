@@ -1,5 +1,8 @@
 package hangman;
 
+import oop.Address;
+import oop.User;
+
 import java.util.Random;
 import java.util.Scanner;
 
