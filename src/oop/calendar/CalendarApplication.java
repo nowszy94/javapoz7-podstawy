@@ -5,20 +5,53 @@ import java.util.Scanner;
 public class CalendarApplication {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        CalendarDay calendarDay2 = new CalendarDay(2018, 3, 7);
-        CalendarDay calendarDay = new CalendarDay(2018, 3, 8);
-        CalendarDay calendarDay3 = new CalendarDay(2018, 3, 9);
+        int answer;
+        CalendarMonth calendarMonth = CalendarMonth.of("March", 2018, 3, 31, 4);
+        do {
+            System.out.println("1. Show month");
+            System.out.println("2. Switch month {month numberOfDays startingWeekDay}");
+            System.out.println("0. End");
+            answer = scanner.nextInt();
+            scanner.nextLine();
 
-        System.out.println("Add note");
-//        calendarDay.setNotes(scanner.nextLine());
-//        String notes = scanner.nextLine();
-        calendarDay.setNotes("test");
+            switch (answer) {
+                case 1:
+                    showMonth(scanner, calendarMonth);
+                    break;
+                case 2:
+                    switchMonth(scanner);
+                    break;
+                default:
+                    System.out.println("Invalid command");
+            }
 
-        CalendarDay[] marchDays = new CalendarDay[]{
-                calendarDay2, calendarDay, calendarDay3, calendarDay2, calendarDay, calendarDay3, calendarDay2, calendarDay, calendarDay3, calendarDay2, calendarDay, calendarDay3
-        };
-        CalendarMonth march = new CalendarMonth("March", marchDays, 4);
-
-        System.out.println(march);
+        } while (answer != 0);
     }
+
+    private static void showMonth(Scanner scanner, CalendarMonth calendarMonth) {
+        System.out.println(calendarMonth);
+        System.out.println("1. Add note, 2. Show note, 3. Remove note");
+        int option = scanner.nextInt();
+        switch(option) {
+            case 1:
+                int dayNumber = scanner.nextInt();
+                String note = scanner.nextLine();
+                calendarMonth.setNoteForDay(note, dayNumber);
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        }
+    }
+
+    private static void switchMonth(Scanner scanner) {
+
+    }
+
+//    public static void main(String[] args) {
+//
+//    }
 }

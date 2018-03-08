@@ -1,7 +1,29 @@
 package oop.calendar;
 
+import java.time.LocalDate;
+
 public class CalendarMonth {
-    private final char[] weekDaysShortcuts = {'M', 'T', 'W', 'T', 'F', 'S', 'S'};
+    private static final char[] weekDaysShortcuts = {'M', 'T', 'W', 'T', 'F', 'S', 'S'};
+
+    public static CalendarMonth currentMonth() {
+        //TODO ZADANIE DOMOWE
+        //        LocalDate now = LocalDate.now();
+        return null;
+    }
+
+    public static CalendarMonth of(String name, int year, int month, int numberOfDays, int startingWeekDay) {
+        CalendarMonth calendarMonth = new CalendarMonth(name);
+        calendarMonth.startingWeekDay = startingWeekDay;
+        calendarMonth.days = createCalendarDays(year, month, numberOfDays);
+        return calendarMonth;
+    }
+    private static CalendarDay[] createCalendarDays(int year, int month, int numberOfDays) {
+        CalendarDay[] days = new CalendarDay[numberOfDays];
+        for (int i = 0; i < numberOfDays; i++) {
+            days[i] = new CalendarDay(year, month, i + 1);
+        }
+        return days;
+    }
 
     private final String name;
     private CalendarDay[] days;
@@ -74,6 +96,10 @@ public class CalendarMonth {
         calendarDayRepresentation += calendarDay.hasNote() ? "*" : " ";
         calendarDayRepresentation += calendarDay.getDay() >= 10 ? " " : "  ";
         return calendarDayRepresentation;
+    }
+
+    public void setNoteForDay(String note, int dayNumber) {
+        days[dayNumber - 1].setNotes(note);
     }
 
     //tablica z dniami
