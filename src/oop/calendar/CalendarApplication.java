@@ -11,8 +11,8 @@ public class CalendarApplication {
 
         System.out.println("Add note");
 //        calendarDay.setNotes(scanner.nextLine());
-        String notes = scanner.nextLine();
-        calendarDay.setNotes(notes);
+//        String notes = scanner.nextLine();
+        calendarDay.setNotes("test");
 
         CalendarDay[] marchDays = new CalendarDay[]{
                 calendarDay2, calendarDay, calendarDay3, calendarDay2, calendarDay, calendarDay3, calendarDay2, calendarDay, calendarDay3, calendarDay2, calendarDay, calendarDay3

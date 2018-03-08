@@ -51,11 +51,11 @@ public class CalendarMonth {
         for (int i = 0; i < startingWeekDay - 1; i++) {
             builder.append("    ");
         }
-        for (int i = startingWeekDay ; i < days.length + startingWeekDay ; i++) {
-            if (i % 7 == 0) {
+        for (int i = 0 ; i < days.length; i++) {
+            if ((i + startingWeekDay - 1) % 7 == 0) {
                 builder.append("\n");
             }
-            builder.append(createCalendarDayElement(days[i - startingWeekDay]));
+            builder.append(createCalendarDayElement(days[i]));
         }
         builder.append("\n");
         appendHorizontalLine(builder);
