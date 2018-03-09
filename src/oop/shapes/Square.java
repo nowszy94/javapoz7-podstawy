@@ -1,6 +1,6 @@
 package oop.shapes;
 
-public class Square {
+public class Square implements Shape {
     private int a;
 
     public Square(int a) {
@@ -19,11 +19,22 @@ public class Square {
         return Math.sqrt(2) * a;
     }
 
+    public String getName() {
+        return "Square";
+    }
+
     public int getA() {
         return a;
     }
 
     public void setA(int a) {
         this.a = a;
+    }
+
+    @Override
+    public String toString() {
+        return "Square{" +
+                "a=" + a +
+                '}';
     }
 }
