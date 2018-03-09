@@ -7,7 +7,7 @@ public class CalendarMonth {
 
     public static CalendarMonth currentMonth() {
         //TODO ZADANIE DOMOWE
-        //        LocalDate now = LocalDate.now();
+//                LocalDate now = LocalDate.now();
         return null;
     }
 
@@ -37,6 +37,10 @@ public class CalendarMonth {
         this.name = name;
         this.days = days;
         this.startingWeekDay = startingWeekDay;
+    }
+
+    public CalendarDay getCalendarDay(int dayNumber) {
+        return days[dayNumber - 1];
     }
 
     public String getName() {
