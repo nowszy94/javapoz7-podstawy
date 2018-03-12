@@ -1,6 +1,5 @@
 package oop;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Application {
@@ -18,7 +17,7 @@ public class Application {
         user.address = address;
 
 
-        Address blabla = new Address("asdfas", "asdf", "ASdfasd",1);
+        Address blabla = new Address("asdfas", "asdf", "ASdfasd", 1);
         blabla.city = "Poznan";
 
         user.introduceYourself();
