@@ -1,12 +1,27 @@
 package collections;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CollectionsTest {
     public static void main(String[] args) {
+        showList(Arrays.asList("Jan", "Anna", "Szymon", "Karolina"));
+    }
 
+    private static void showList(List<String> list) {
+        for (String value : list) {
+            if (value.length() > 5) {
+                System.out.println(value);
+            }
+        }
+
+//        for (int i = 0; i < list.size(); i++) {
+//            String value = list.get(i);
+//            if (value.length() > 5) {
+//                System.out.println(value);
+//            }
+//        }
     }
 
 
