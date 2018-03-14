@@ -1,9 +1,6 @@
 package films;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MoviesService {
     private List<Actor> actors;
@@ -28,7 +25,23 @@ public class MoviesService {
         return new ArrayList<>(actors);
     }
 
+    public List<Movie> findMovies(Actor actor) {
+        List<Movie> tmpMovies = new ArrayList<>();
+        Set<Map.Entry<Movie, List<Actor>>> entries = filmRoles.entrySet();
+        for (Map.Entry<Movie, List<Actor>> entry : entries) {
+            List<Actor> actorsInMap = entry.getValue();
+            if (actorsInMap.contains(actor)) {
+                tmpMovies.add(entry.getKey());
+            }
+        }
+        return tmpMovies;
+    }
+
     public List<Movie> findMovies() {
         return new ArrayList<>(movies);
+    }
+
+    public Actor findActor(int actorId) {
+        return actors.get(actorId);
     }
 }

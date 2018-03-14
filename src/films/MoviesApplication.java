@@ -29,9 +29,9 @@ public class MoviesApplication {
         do {
             System.out.println("1. Actors");
             System.out.println("2. Movies");
+            System.out.println("3. Find movies for actor");
             System.out.println("0. Exit");
             answer = scanner.nextInt();
-            scanner.nextLine();
 
             switch (answer) {
                 case 1:
@@ -40,8 +40,17 @@ public class MoviesApplication {
                 case 2:
                     moviesView(scanner, moviesService);
                     break;
+                case 3:
+                    int actorId = scanner.nextInt();
+                    actorMoviesView(scanner, moviesService, actorId);
             }
+            scanner.nextLine();
         } while(answer != 0);
+    }
+
+    private static void actorMoviesView(Scanner scanner, MoviesService moviesService, int actorId) {
+        Actor actor = moviesService.findActor(actorId);
+        List<Movie> actorMovies = moviesService.findMovies(actor);
     }
 
     private static void actorsView(Scanner scanner, MoviesService moviesService) {
