@@ -14,6 +14,10 @@ public class Actor {
         this.birthDate = birthDate;
     }
 
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -36,6 +40,11 @@ public class Actor {
 
     public void setBirthDate(int birthDate) {
         this.birthDate = birthDate;
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Destroing " + this);
     }
 
     @Override

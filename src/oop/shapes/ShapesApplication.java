@@ -1,5 +1,9 @@
 package oop.shapes;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 public class ShapesApplication {
     public static void main(String[] args) {
 //        Square square = new Square(4);
@@ -10,10 +14,22 @@ public class ShapesApplication {
 //        showSquares(squares);
 //        showRectangles(rectangles);
 
+        Arrays.asList("Szymon", "Jan", "Anna")
+                .stream()
+                .filter(e -> e.startsWith("S"))
+                .forEach(s -> System.out.println(s));
+
         Shape[] shapes = {new Square(4), new Rectangle(2, 3), new Diamond()};
         Square[] squares = {new Square(4), new Square(8), new Square(2)};
         showShapes(shapes);
         showShapes(squares);
+
+        Map<String, Integer> map = new HashMap<>();
+        map.put("abc", 2);
+        map.put("abce", 3);
+        map.forEach((k, v) -> {
+            System.out.println(k + ": " + v);
+        });
     }
 
     private static void showShapes(Shape[] shapes) {

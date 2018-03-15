@@ -11,6 +11,11 @@ public class MoviesApplication {
                 new Director("Roman", "Polanski", 1940));
         Movie movie2 = new Movie("Matrix", "Tutaj opis", 2000,
                 new Director("Bracia", "Wachowscy", 1970));
+        Movie movie3 = new Movie("Matrix 2", "Tutaj opis", 2002,
+                new Director("Bracia", "Wachowscy", 1970));
+        Movie movie4 = new Movie("Matrix 3", "Tutaj opis", 2005,
+                new Director("Bracia", "Wachowscy", 1970));
+
 
         List<Actor> actors = new ArrayList<>();
         actors.add(actor1);
@@ -18,10 +23,14 @@ public class MoviesApplication {
         List<Movie> movies = new ArrayList<>();
         movies.add(movie1);
         movies.add(movie2);
+        movies.add(movie3);
+        movies.add(movie4);
 
         Map<Movie, List<Actor>> roles = new HashMap<>();
         roles.put(movie1, Arrays.asList(actor1, actor2));
         roles.put(movie2, Arrays.asList(actor1));
+        roles.put(movie3, Arrays.asList(actor1));
+        roles.put(movie4, Arrays.asList(actor1, actor2));
 
         MoviesService moviesService = new MoviesService(actors, movies, roles);
         Scanner scanner = new Scanner(System.in);
@@ -51,6 +60,8 @@ public class MoviesApplication {
     private static void actorMoviesView(Scanner scanner, MoviesService moviesService, int actorId) {
         Actor actor = moviesService.findActor(actorId);
         List<Movie> actorMovies = moviesService.findMovies(actor);
+        showMovies(actorMovies);
+        scanner.nextLine();
     }
 
     private static void actorsView(Scanner scanner, MoviesService moviesService) {
@@ -63,9 +74,13 @@ public class MoviesApplication {
 
     private static void moviesView(Scanner scanner, MoviesService moviesService) {
         List<Movie> movies = moviesService.findMovies();
+        showMovies(movies);
+        scanner.nextLine();
+    }
+
+    private static void showMovies(List<Movie> movies) {
         for (Movie movie : movies) {
             System.out.println(movie);
         }
-        scanner.nextLine();
     }
 }
